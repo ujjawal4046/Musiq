@@ -1,0 +1,3 @@
+dbshell -> open mysql
+makemigrations -> based on changes on models make migratiions\
+shell -> python shell

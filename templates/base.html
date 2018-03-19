@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+<body background="{% static 'css/background.png' %}'"></body>
+<head>
+	<meta charset="utf-8">
+	<title>Musiq | Home</title>
+    {% load static %}
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+
+	<header class="p-20">
+		<div class="dropdown show" style="display: inline-block;">
+			<button class="btn dropdown-toggle"  id="dropdownMenuButton" data-toggle="dropdown"><i class="fa fa-align-justify"></i></button>
+			<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+				<li class="p-l-10"><a href="#">TOP CHARTS</a></li>
+				<li class="p-l-10"><a href="#">TOP RATED PLAYLISTS</a></li>
+				<li class="p-l-10"><a href="#">NEW SONGS</a></li>
+			</ul>
+		</div>
+		<div class="inline-block" style="float: right">
+			<button><a href="login.html">Login</a></button>
+			<button><a href="register.html">Register</a></button>
+		</div>
+	</header>
+	<section>
+        {% block content %}
+
+        {% endblock %}
+	</section>
+
+
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
+	{% load static %}
+    <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+</body>
+</html>
