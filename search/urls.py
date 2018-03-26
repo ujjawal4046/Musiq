@@ -1,10 +1,11 @@
-from django.conf.urls import url
+from django.conf.urls import url,include
 from . import views
 
-app_name = 'search'
+
 
 urlpatterns = [
-    url(r'^artist/(?P<title>[[a-zA_Z]+]+)$',views.search,name='artist_detail'),
+    url(r'artist/(?P<title>[a-zA-Z0-9 ]+)',views.artist_detail,name='artist_detail'),
+    url(r'album/(?P<title>[a-zA-Z0-9 ]+)',views.album_detail,name='album_detail'),
     url(r'^', views.search, name='index'),
 
 ]

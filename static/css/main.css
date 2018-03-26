@@ -21,6 +21,16 @@ button {
     -ms-transition: all 0.3s;
     -o-transition: all 0.3s;
     transition: all 0.3s; }
+    table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    }
+    th, td {
+    padding: 5px;
+    }
+    th {
+    text-align: left;
+    }
     button .fa {
     	font-size: 1.2em;
     }
@@ -45,14 +55,44 @@ button {
 	.dropdown-menu.hide {
 		display: none;
 	}
-
-
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  background-color: #2196F3;
+  padding: 10px;
+}
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+.containerdiv {
+  border: 0;
+  float: left;
+  position: relative;
+  width: 80px;
+}
+.cornerimage {
+  border: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  overflow: hidden;
+ }
 .floated_img
 {
   float: left;
 
 }
-
+div.caption: {
+  display: block;
+}
+ .flex-container {
+  display: flex;
+  flex-wrap: wrap;
+}
 .p-0 {
   padding: 0px; }
 

@@ -1,0 +1,20 @@
+{% extends "base_search.html" %}
+{% block title %}<title>Musiq | Results</title>{% endblock %}
+{% block content %}
+    <h1>Showing results for '{{ query }}'</h1>
+    <div class="flex-container">
+{% for album in Album %}
+  <div class="col-md-4">
+    <div class="thumbnail">
+	  {% if album.album_logo %}
+        <img src="{{ album.album_logo.url }}" class="img-responsive"  height="300" width="300">
+      {% else %}
+          {% load static %}
+        <img src="{% static 'album.jpg' %}" class="img-responsive" height="300" width="300">
+      {% endif %}
+      <a href="search/album/{{album.title }}" class="floated_img">{{album.title}} </a>
+   </div>
+    </div>
+{% endfor %}
+</div>
+{% endblock %}

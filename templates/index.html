@@ -1,8 +1,10 @@
 {% extends "base.html" %}
+{% block title %}<title>Musiq | Home</title>{% endblock %}
 {% block content %}
 		<div class="center-align">
 			<form action="/search" method="get" style="width: 80%;max-width: 480px;min-width: 240px;margin-left: auto;margin-right: auto;">
-				<h2 class="p-b-20" style="text-align: center;">Musiq</h2>
+                {% load static %}
+				<img class="p-b-20" style="text-align: center;" src="{% static 'musiq2.png' %}" alt="MUSIQ">
 				<div class="input-group mb-3">
 					<input type="text" class="form-control" name="search_query" placeholder="Search...">
 					<div class="input-group-append">

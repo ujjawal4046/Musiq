@@ -1,0 +1,61 @@
+{% extends "base_search.html" %}
+{% block title %}<title>Musiq | Details</title>{% endblock %}
+{% block content %}
+	<div style="text-align: center">
+             {% if artist.artist_logo %}
+        <img src="{{ artist.artist_logo.url }}" class="img-responsive"  height="300" width="300">
+      {% else %}
+          {% load static %}
+        <img src="{% static 'artist.png' %}" class="img-responsive" height="300" width="300">
+      {% endif %}
+			<p>{{ artist.title }}</p>
+			<p><b>Country-</b>{{ artist.country }}</p>
+			<p><b>Year-</b>{{ artist.year }}</p>
+			<p>{{ artist.description }}</p>
+
+    </div>
+    <div>
+        <h3>Track Listing</h3>
+        <table style="width:100%">
+  <tr>
+    <th>Title</th>
+    <th>Album</th>
+      <th>Genre</th>
+      <th>Length</th>
+      <th>Language</th>
+      <th>Rating</th>
+      <th>Links</th>
+  </tr>
+
+            {% for track in tracks %}
+                 <tr>
+                <td>{{ track.title }} </td>
+                <td>{{ track.album }}</td>
+                 <td>{{ track.genre }}</td>
+                 <td>{{ track.length|time:"H:i:s"  }}</td>
+                 <td>{{ track.language }}</td>
+                 <td>
+                 <div class="containerdiv">
+                <div>
+                    {% load static %}
+                    <img style="max-width: 80px" src="{% static 'stars_blank.png' %}" alt="rating" >
+                </div>
+                <div class="cornerimage" style="width:{{ track.rating }}%;">
+                     {% load static %}
+                    <img style="max-width: 80px" src="{% static 'stars_full.png' %}" alt="rating">
+
+                </div>
+                 </td>
+
+<div>
+                    {% if track.url %}
+                        {% load static %}
+                        <td><a href="{{ track.url }}" target="_blank"><img src="{% static 'youtube.png' %}" height="40" width="40"></a></td>
+
+                    {% endif %}
+                 </tr>
+            {% endfor %}
+        </table>
+
+    </div>
+{% endblock %}

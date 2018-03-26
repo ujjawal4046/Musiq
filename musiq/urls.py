@@ -20,11 +20,14 @@ from django.conf.urls import include, url
 from musiq.views import index
 from django.conf import settings
 from django.conf.urls.static import static
+from login.views import register
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$',index),
     url(r'^index.html/$',index),
+    url(r'^register',register),
     url(r'^search',include('search.urls')),
+    url(r'^login',include('login.urls')),
 
 ]
 

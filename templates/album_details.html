@@ -1,0 +1,72 @@
+{% extends "base_search.html" %}
+{% block title %}<title>Musiq | Details</title>{% endblock %}
+{% block content %}
+	<div style="text-align: center">
+             {% if album.album_logo %}
+        <img src="{{ album.album_logo.url }}" class="img-responsive"  height="300" width="300">
+      {% else %}
+          {% load static %}
+        <img src="{% static 'album.jpg' %}" class="img-responsive" height="300" width="300">
+      {% endif %}
+			<p>{{ album.title}}</p>
+			<p><b>Genre-</b>{{ album.genre}}</p>
+			<p><b>Length-</b>{{album.length|time:"H:i:s" }}</p>
+
+            <p>Rating-</p>
+			 <div class="containerdiv">
+                <div>
+                    {% load static %}
+                    <img style="max-width: 80px" src="{% static 'stars_blank.png' %}" alt="rating" >
+                </div>
+                <div class="cornerimage" style="width:{{ track.rating }}%;">
+                     {% load static %}
+                    <img style="max-width: 80px" src="{% static 'stars_full.png' %}" alt="rating">
+
+                </div>
+                 </div>
+
+    </div>
+
+    <div>
+        <h3>Track Listing</h3>
+        <table style="width:100%">
+  <tr>
+    <th>Title</th>
+    <th>Artist</th>
+      <th>Length</th>
+      <th>Language</th>
+      <th>Rating</th>
+      <th>Links</th>
+  </tr>
+
+            {% for track in tracks %}
+                 <tr>
+                <td>{{ track.title }} </td>
+                <td>{{ track.artist }}</td>
+                 <td>{{ track.length|time:"H:i:s"  }}</td>
+                 <td>{{ track.language }}</td>
+                 <td>
+                 <div class="containerdiv">
+                <div>
+                    {% load static %}
+                    <img style="max-width: 80px" src="{% static 'stars_blank.png' %}" alt="rating" >
+                </div>
+                <div class="cornerimage" style="width:{{ track.rating }}%;">
+                     {% load static %}
+                    <img style="max-width: 80px" src="{% static 'stars_full.png' %}" alt="rating">
+
+                </div>
+                 </td>
+
+<div>
+                    {% if track.url %}
+                        {% load static %}
+                        <td><a href="{{ track.url }}" target="_blank"><img src="{% static 'youtube.png' %}" height="40" width="40"></a></td>
+
+                    {% endif %}
+                 </tr>
+            {% endfor %}
+        </table>
+
+    </div>
+{% endblock %}
