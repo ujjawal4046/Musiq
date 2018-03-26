@@ -59,6 +59,8 @@ class Top_Chart(models.Model):
     description = models.TextField(null=True,blank=True)
 
     class Admin: pass
+    def __str__(self):
+        return self.title
 
 class Track(models.Model):
     title = models.CharField(max_length=50)
@@ -93,7 +95,8 @@ class Chart_member(models.Model):
 
     class Admin: pass
 
-
+    def __str__(self):
+        return self.track.title + ',' + self.top_chart.title
 
 
 

@@ -1,0 +1,67 @@
+{% extends "base_search.html" %}
+{% block title %}<title>Musiq | Results</title>{% endblock %}
+{% block content %}
+    <div class="floated_img">
+{% for t in top_chart %}
+  <div style="text-align: center">
+      <h4>{{t.title }}</h4>
+        <h4>{{ t.country }}</h4>
+     <p>{{ t.description }}</p>
+        <div>
+           <table style="width:100%">
+           <tr>
+               <th>Title</th>
+               <th>Album</th>
+               <th>Artist</th>
+               <th>Genre</th>
+               <th>Length</th>
+               <th>Year</th>
+               <th>Country</th>
+               <th>Langauge</th>
+               <th>Rating</th>
+               <th>Links</th>
+           </tr>
+            {% for tit,tra in tracks.items %}
+                {% if tit == t.title %}
+                    {% for track in tra %}
+                <tr>
+                    <td>{{ track.title }} </td>
+                    <td>{{ track.album }}</td>
+                    <td>{{ track.artist}}</td>
+                    <td>{{ track.genre }} </td>
+                    <td>{{ track.length|time:"H:i:s" }}</td>
+                    <td>{{ track.year }} </td>
+                    <td>{{ track.country }}</td>
+                    <td>{{ track.language }}</td>
+                    <td>
+                 <div class="containerdiv">
+                <div>
+                    {% load static %}
+                    <img style="max-width: 80px" src="{% static 'stars_blank.png' %}" alt="rating" >
+                </div>
+                <div class="cornerimage" style="width:{{ track.rating }}%;">
+                     {% load static %}
+                    <img style="max-width: 80px" src="{% static 'stars_full.png' %}" alt="rating">
+
+                </div>
+                 </div>
+                 </td>
+                <td>
+                    {% if track.url %}
+                        {% load static %}
+                        <a href="{{ track.url }}" target="_blank"><img src="{% static 'youtube.png' %}" height="40" width="40"></a>
+
+                    {% endif %}
+               </td>
+                </tr>
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+            </ol>
+           </table>
+    </div>
+
+   </div>
+{% endfor %}
+</div>
+{% endblock %}
