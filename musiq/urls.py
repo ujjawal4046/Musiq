@@ -20,14 +20,19 @@ from django.conf.urls import include, url
 from musiq.views import index
 from django.conf import settings
 from django.conf.urls.static import static
-from login.views import register
+from login.views import register,login_user,logout_user,home_user,top_playlist,requests,add_playlist
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$',index),
-    url(r'^index.html/$',index),
+    url(r'^index/$',index),
     url(r'^register',register),
     url(r'^search',include('search.urls')),
-    url(r'^login',include('login.urls')),
+    url(r'^login',login_user),
+    url(r'^logout',logout_user),
+    url(r'top_playlist',top_playlist,name='top_playlist'),
+    url(r'^home_user',home_user),
+    url(r'^requests',requests),
+    url(r'^add_playlist/(?P<title>[a-zA-Z0-9_]+)',add_playlist)
 
 ]
 

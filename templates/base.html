@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 {% load static %}
-<body background="{% static 'css/background.png' %}'"></body>
-<head>
+<div style="width: 100%;height: 100%">
+<body background="{% static 'css/background.png' %}'" ></body>
+</div>
+    <head>
 	<meta charset="utf-8">
     {% block title %}
     {% endblock %}
@@ -18,15 +20,15 @@
 		<div class="dropdown show" style="display: inline-block;">
 			<button class="btn dropdown-toggle"  id="dropdownMenuButton" data-toggle="dropdown"><i class="fa fa-align-justify"></i></button>
 			<ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-				<li class="p-l-10"><a href="search/top_charts">TOP CHARTS</a></li>
-				<li class="p-l-10"><a href="#">TOP RATED PLAYLISTS</a></li>
-				<li class="p-l-10"><a href="search/new_songs">NEW SONGS</a></li>
+				<li class="p-l-10"><a href="../../search/top_charts">TOP CHARTS</a></li>
+				<li class="p-l-10"><a href="../../top_playlist">TOP RATED PLAYLISTS</a></li>
+				<li class="p-l-10"><a href="../../search/new_songs">NEW SONGS</a></li>
 			</ul>
 		</div>
-		<div class="inline-block" style="float: right">
-			<button><a href="login">Login</a></button>
-			<button><a href="register">Register</a></button>
-		</div>
+       {% block login %}
+        {% endblock %}
+
+
 	</header>
     <section>
         {% block search_header %}
@@ -45,5 +47,6 @@
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
 	{% load static %}
     <script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+    <h4 style="text-align: center;bottom: 0;position: fixed;left: 35%"><b>Have some request?</b><a href="../../../requests">Reach us</a> </h4>
 </body>
 </html>

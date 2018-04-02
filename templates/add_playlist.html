@@ -1,0 +1,18 @@
+{% extends "base_search.html" %}
+{% block title %}<title>Musiq | Top Playlist</title>{% endblock %}
+{% block content %}
+    <br><br><br>
+    {% if playlist %}
+    <form  method="post" style="width: 40%;max-width: 480px;min-width: 240px;margin-left: 0;margin-right: auto;">
+				<div style="text-align:left;">
+
+                    {% for p in playlist %}
+                    <input type="radio" name="playlist_title" value={{ p.title }}>{{ p.title }}&nbsp;&nbsp;
+                    {% endfor %}
+				</div>
+                <button type="submit"><h6>Submit</h6></button>
+    </form>
+        {% else %}
+         <h3><b>You don't have any playlist</b></h3>
+    {% endif %}
+{% endblock %}

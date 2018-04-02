@@ -20,6 +20,9 @@
                <th>Langauge</th>
                <th>Rating</th>
                <th>Links</th>
+               {%  if authentic%}
+               <th>Add to playlist</th>
+               {% endif %}
            </tr>
             {% for tit,tra in tracks.items %}
                 {% if tit == t.title %}
@@ -53,15 +56,24 @@
 
                     {% endif %}
                </td>
+                 {%  if authentic%}
+               <td>
+{% load static %}
+               <a href="../../../add_playlist/{{track.title}}"> <img src="{% static 'playlist.png' %}" width="40" height="40"></a>
+
+
+               </td>
+               {% endif %}
                 </tr>
                     {% endfor %}
                 {% endif %}
             {% endfor %}
-            </ol>
+
            </table>
     </div>
 
    </div>
+    <hr style="border-width: 10px">
 {% endfor %}
 </div>
 {% endblock %}

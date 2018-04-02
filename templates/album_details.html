@@ -12,18 +12,13 @@
 			<p><b>Genre-</b>{{ album.genre}}</p>
 			<p><b>Length-</b>{{album.length|time:"H:i:s" }}</p>
 
-            <p>Rating-</p>
-			 <div class="containerdiv">
-                <div>
-                    {% load static %}
-                    <img style="max-width: 80px" src="{% static 'stars_blank.png' %}" alt="rating" >
-                </div>
-                <div class="cornerimage" style="width:{{ track.rating }}%;">
-                     {% load static %}
-                    <img style="max-width: 80px" src="{% static 'stars_full.png' %}" alt="rating">
-
-                </div>
-                 </div>
+            <p><b>Rating-</b>{{ album.rating }}</p>
+            {% if authentic %}
+            <form action="#" method="get">
+            <input type="text" name="rating" size="1"/>
+            <input type="submit" class="btn" value="Rate" name="mybtn">
+            </form>
+            {% endif %}
 
     </div>
 
@@ -37,6 +32,9 @@
       <th>Language</th>
       <th>Rating</th>
       <th>Links</th>
+      {%  if authentic%}
+               <th>Add to playlist</th>
+      {% endif %}
   </tr>
 
             {% for track in tracks %}
@@ -56,6 +54,7 @@
                     <img style="max-width: 80px" src="{% static 'stars_full.png' %}" alt="rating">
 
                 </div>
+                     </div>
                  </td>
 
 <div>
@@ -64,6 +63,14 @@
                         <td><a href="{{ track.url }}" target="_blank"><img src="{% static 'youtube.png' %}" height="40" width="40"></a></td>
 
                     {% endif %}
+ {%  if authentic%}
+               <td>
+{% load static %}
+               <a href="../../../add_playlist/{{track.title}}"> <img src="{% static 'playlist.png' %}" width="40" height="40"></a>
+
+
+               </td>
+               {% endif %}
                  </tr>
             {% endfor %}
         </table>

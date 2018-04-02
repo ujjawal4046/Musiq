@@ -15,6 +15,10 @@
                <th>Langauge</th>
                <th>Rating</th>
                <th>Links</th>
+               {%  if authentic%}
+               <th>Add to playlist</th>
+                   <th>Rate it</th>
+               {% endif %}
            </tr>
             {% for track in Track %}
                 <tr>
@@ -38,6 +42,7 @@
 
                 </div>
                  </div>
+
                  </td>
                 <td>
                     {% if track.url %}
@@ -46,7 +51,21 @@
 
                     {% endif %}
                </td>
+                {%  if authentic%}
+               <td>
+{% load static %}
+               <a href="../../../add_playlist/{{track.title}}"> <img src="{% static 'playlist.png' %}" width="40" height="40"></a>
+               </td>
+                    <td>
+                   <form action="#" method="get">
+            <input type="text" name="rating" size="1"/>
+            <input type="submit" class="btn" value="Rate" name="tbutton">
+            <input type="hidden" name="track_name" value={{ track.title}}>
+            </form>
+               </td>
+               {% endif %}
                 </tr>
+
             {% endfor %}
             </ol>
            </table>

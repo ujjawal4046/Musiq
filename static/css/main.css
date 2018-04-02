@@ -81,6 +81,13 @@ button {
   left: 0;
   overflow: hidden;
  }
+.footerbar {
+    clear: both;
+    position: relative;
+    z-index: 10;
+    height: 3em;
+    margin-top: -3em;
+}
 .floated_img
 {
   float: left;

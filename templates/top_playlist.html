@@ -1,0 +1,82 @@
+{% extends "base_search.html" %}
+{% block title %}<title>Musiq | Top Playlist</title>{% endblock %}
+{% block content %}
+{% for p in playlist %}
+    <div style="text-align: center">
+      <h4><b>Title-</b>{{p.title}}</h4>
+    <h4><b>Rating-</b>{{ p.rating }}%</h4>
+    <h4><b>Creator-</b>{{ p.creator.username }}</h4>
+    {% if authentic %}
+            <form action="#" method="get">
+            <input type="text" name="rating" size="1"/>
+            <input type="submit" class="btn" value="Rate" name="mybtn">
+            <input type="hidden" name="playlist_name" value={{ p.title}}>
+            </form>
+    {% endif %}
+     <div>
+           <table style="width:100%">
+           <tr>
+               <th>Title</th>
+               <th>Album</th>
+               <th>Artist</th>
+               <th>Genre</th>
+               <th>Length</th>
+               <th>Year</th>
+               <th>Country</th>
+               <th>Langauge</th>
+               <th>Rating</th>
+               <th>Links</th>
+               {%  if authentic%}
+               <th>Add to playlist</th>
+               {% endif %}
+           </tr>
+            {% for tit,tra in tracks.items %}
+                {% if tit == p.title %}
+                    {% for track in tra %}
+                <tr>
+                    <td>{{ track.title }} </td>
+                    <td>{{ track.album }}</td>
+                    <td>{{ track.artist}}</td>
+                    <td>{{ track.genre }} </td>
+                    <td>{{ track.length|time:"H:i:s" }}</td>
+                    <td>{{ track.year }} </td>
+                    <td>{{ track.country }}</td>
+                    <td>{{ track.language }}</td>
+                    <td>
+                 <div class="containerdiv">
+                <div>
+                    {% load static %}
+                    <img style="max-width: 80px" src="{% static 'stars_blank.png' %}" alt="rating" >
+                </div>
+                <div class="cornerimage" style="width:{{ track.rating }}%;">
+                     {% load static %}
+                    <img style="max-width: 80px" src="{% static 'stars_full.png' %}" alt="rating">
+
+                </div>
+                 </div>
+                 </td>
+                <td>
+                    {% if track.url %}
+                        {% load static %}
+                        <a href="{{ track.url }}" target="_blank"><img src="{% static 'youtube.png' %}" height="40" width="40"></a>
+
+                    {% endif %}
+               </td>
+                {%  if authentic%}
+               <td>
+{% load static %}
+               <a href="../../../add_playlist/{{track.title}}"> <img src="{% static 'playlist.png' %}" width="40" height="40"></a>
+
+
+               </td>
+               {% endif %}
+                </tr>
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+
+           </table>
+    </div>
+<hr style="border-width: 10px">
+{% endfor %}
+{% endblock %}

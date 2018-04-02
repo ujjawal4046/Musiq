@@ -2,6 +2,7 @@ from django.db import models
 from django.conf import settings
 import urllib
 from bs4 import BeautifulSoup
+from login.models import PlayList
 
 def search_youtube(name):
     query = urllib.parse.quote(name)
@@ -30,6 +31,7 @@ class Album(models.Model):
     length = models.TimeField(default='0:00:00')
     year = models.IntegerField(null=True)
     rating = models.IntegerField(null=True,blank=True,default=0)
+    rating_count = models.IntegerField(default=0)
     album_logo = models.FileField(null=True,blank=True)
     def __str__(self):
         return self.title
@@ -72,7 +74,9 @@ class Track(models.Model):
     language = models.CharField(max_length=25)
     length = models.TimeField(default='0:00:00')
     rating = models.IntegerField(null=True,blank=True,default=0)
+    rating_count = models.IntegerField(default=0)
     charts = models.ManyToManyField(Top_Chart,through='Chart_member',null=True,blank=True)
+    playlist = models.ManyToManyField(PlayList,null=True,blank=True)
     url = models.URLField(null=True,blank=True)
     def __str__(self):
         return self.title
@@ -80,6 +84,7 @@ class Track(models.Model):
     class Admin: pass
 
     def save(self, *args, **kwargs):
+        self.title = str(self.title).replace(' ', '_')
         if self.country is None:
             self.country = self.artist.country
         if self.url is None:

@@ -25,6 +25,9 @@
       <th>Language</th>
       <th>Rating</th>
       <th>Links</th>
+      {%  if authentic%}
+               <th>Add to playlist</th>
+               {% endif %}
   </tr>
 
             {% for track in tracks %}
@@ -53,6 +56,14 @@
                         <td><a href="{{ track.url }}" target="_blank"><img src="{% static 'youtube.png' %}" height="40" width="40"></a></td>
 
                     {% endif %}
+ {%  if authentic%}
+               <td>
+{% load static %}
+               <a href="../../../add_playlist/{{track.title}}"> <img src="{% static 'playlist.png' %}" width="40" height="40"></a>
+
+
+               </td>
+               {% endif %}
                  </tr>
             {% endfor %}
         </table>

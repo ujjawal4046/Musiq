@@ -25,7 +25,7 @@ SECRET_KEY = '3mwdzz+*^5xxbc47%5pf-lmcw&c&%jbw!38%)@r-0&5k1zzc#q'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['10.117.15.252','127.0.0.1','10.145.189.17','10.117.15.65']
+ALLOWED_HOSTS = ['10.117.15.252','127.0.0.1','10.145.189.17','10.117.15.65','10.147.83.175']
 
 
 # Application definition
@@ -45,7 +45,7 @@ MIDDLEWARE= [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
+    #'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     #'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',

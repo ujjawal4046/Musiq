@@ -1,5 +1,5 @@
 {% extends "base_search.html" %}
-{% block title %}<title>Musiq | Results</title>{% endblock %}
+{% block title %}<title>Musiq | Genre</title>{% endblock %}
 {% block content %}
     <h1>Showing results for '{{ query }}'</h1>
     <div class="floated_img">
@@ -17,6 +17,7 @@
      <p>{{ genre.description }}</p>
      <h6>Popular artist-{{ genre.popular_artists }}</h6>
     <h6>Popular tracks-{{ genre.popular_tracks}}</h6>
+    <hr style="border-width: 10px">
      </div>
    </div>
 {% endfor %}

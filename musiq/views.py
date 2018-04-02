@@ -8,4 +8,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import login,authenticate
 
 def index(request):
-    return render(request,'index.html');
+    authentic = False
+    if request.user.is_authenticated:
+        authentic = True
+    return render(request,'index.html',{'authentic':authentic});

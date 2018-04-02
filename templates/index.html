@@ -1,10 +1,41 @@
 {% extends "base.html" %}
 {% block title %}<title>Musiq | Home</title>{% endblock %}
+{% block login %}
+{% if  authentic  %}
+
+	 <ul class="nav navbar-nav navbar-right" style="float: right">
+                <li>
+                    <a href="../../logout">
+                        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp; Logout
+                    </a>
+                </li>
+            </ul>
+    <ul class="nav navbar-nav navbar-right" style="float: right">
+                <li>
+                    <a href="../../home_user">
+                        <span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp;Home
+                    </a>
+                </li>
+            </ul>
+    {% else %}
+
+		<div class="inline-block" style="float: right">
+            <form action="../login">
+    <input type="submit" value="login" />
+</form>
+            <form action="../register">
+    <input type="submit" value="register" />
+</form>
+
+		</div>
+
+{% endif %}
+{% endblock %}
 {% block content %}
 		<div class="center-align">
 			<form action="/search" method="get" style="width: 80%;max-width: 480px;min-width: 240px;margin-left: auto;margin-right: auto;">
                 {% load static %}
-				<img class="p-b-20" style="text-align: center;" src="{% static 'musiq2.png' %}" alt="MUSIQ">
+				<img class="p-b-20" style="text-align: center;" src="{% static 'logo.jpg' %}" alt="MUSIQ">
 				<div class="input-group mb-3">
 					<input type="text" class="form-control" name="search_query" placeholder="Search...">
 					<div class="input-group-append">
@@ -16,6 +47,8 @@
 					<input type="radio" name="filter" value="artist"> Artist &nbsp;&nbsp;
 					<input type="radio" name="filter" value="album"> Album &nbsp;&nbsp;
 					<input type="radio" name="filter" value="genre"> Genre &nbsp;&nbsp;
+                      <input type="radio" name="filter" value="playlist"> Playlist &nbsp;&nbsp;
+
 				</div>
 			</form>
 		</div>

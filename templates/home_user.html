@@ -1,0 +1,70 @@
+{% extends "base_search.html" %}
+{% block title %}<title>Musiq | Home User</title>{% endblock %}
+{% block content %}
+<h1 style="text-align: center"><b>Welcome {{ name }}</b></h1>
+{% for p in playlist %}
+    <div style="text-align: center">
+      <h4><b>Title-</b>{{p.title}}</h4>
+     <h4><b>Rating-</b>{{ p.rating }}%</h4>
+     <div>
+           <table style="width:100%">
+           <tr>
+               <th>Title</th>
+               <th>Album</th>
+               <th>Artist</th>
+               <th>Genre</th>
+               <th>Length</th>
+               <th>Year</th>
+               <th>Country</th>
+               <th>Langauge</th>
+               <th>Rating</th>
+               <th>Links</th>
+           </tr>
+            {% for tit,tra in tracks.items %}
+                {% if tit == p.title %}
+                    {% for track in tra %}
+                <tr>
+                    <td>{{ track.title }} </td>
+                    <td>{{ track.album }}</td>
+                    <td>{{ track.artist}}</td>
+                    <td>{{ track.genre }} </td>
+                    <td>{{ track.length|time:"H:i:s" }}</td>
+                    <td>{{ track.year }} </td>
+                    <td>{{ track.country }}</td>
+                    <td>{{ track.language }}</td>
+                    <td>
+                 <div class="containerdiv">
+                <div>
+                    {% load static %}
+                    <img style="max-width: 80px" src="{% static 'stars_blank.png' %}" alt="rating" >
+                </div>
+                <div class="cornerimage" style="width:{{ track.rating }}%;">
+                     {% load static %}
+                    <img style="max-width: 80px" src="{% static 'stars_full.png' %}" alt="rating">
+
+                </div>
+                 </div>
+                 </td>
+                <td>
+                    {% if track.url %}
+                        {% load static %}
+                        <a href="{{ track.url }}" target="_blank"><img src="{% static 'youtube.png' %}" height="40" width="40"></a>
+
+                    {% endif %}
+               </td>
+                </tr>
+                    {% endfor %}
+                {% endif %}
+            {% endfor %}
+
+           </table>
+    </div>
+
+
+{% endfor %}
+<h1><b>Create a playlist</b></h1>
+    <form action="">
+    <input type="text" name="title"  placeholder="Title">
+    <button type="submit"><h6>Submit</h6></button>
+    </form>
+{% endblock %}
