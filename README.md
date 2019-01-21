@@ -1,8 +1,8 @@
 # Musiq
-Music information and reviews website project
+Music information and reviews website project 
 
 
-The web application proposed allows a user to search for
+The web application allows a user to search for
 information using different search criteria for music. The different
 search criteria include
 - Artist
@@ -19,3 +19,9 @@ create playlists which can be reviewed by other users.
 information not available currently.
 - A user has option to become a contributor for the
 application.
+
+Website Screenshots-
+![Screenshot]
+![Screenshot]
+![Screenshot]
+![Screenshot]
